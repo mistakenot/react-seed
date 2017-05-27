@@ -1,5 +1,5 @@
-import {IAction} from "actions";
-import * as Actions from "actions/counter.actions";
+import {Action} from "actions";
+import * as Actions from "../actions/counter.actions";
 
 export interface State {
     count: number;
@@ -9,7 +9,7 @@ const defaultState: State = {
     count: 0
 }
 
-export function reducer(state: State = defaultState, action: IAction): State {
+export function reducer(state: State = defaultState, action: Action): State {
     switch (action.type) {
         case (Actions.Types.increase): {
             return Object.assign({}, state, {
