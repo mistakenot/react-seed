@@ -7,3 +7,5 @@ export type Dispatch = (msg: Action) => void;
 export interface ActionHandler {
     dispatch: Dispatch;
 }
+
+export const emptyDispatch: Dispatch = (_) => {}

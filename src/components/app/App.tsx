@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import {Counter} from "../counter";
+import {Time} from "../time/time";
 import {connect} from "react-redux";
 import {AppState} from "state";
 
@@ -20,6 +21,7 @@ const App = (props: Props) => (
       To get started, edit this <code>src/App.tsx</code> and save to reload.
     </p>
     <Counter count={props.counter.count} dispatch={props.dispatch}/>
+    <Time {...props.time} dispatch={props.dispatch} />
   </div>);
   
 const mapStateToProps = (state: AppState) => {
