@@ -1,5 +1,6 @@
-import {Action} from "../actions";
-import * as Actions from "../actions/time.actions";
+import {Action} from "utils/actions";
+
+import * as Actions from "./time.actions";
 
 export interface State {
     time: string;

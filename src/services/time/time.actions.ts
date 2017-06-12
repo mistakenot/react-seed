@@ -1,4 +1,4 @@
-import {Action} from "./";
+import {Action} from "utils/actions";
 
 export const Types = {
     NewTime: "TIME_NEW_TIME",

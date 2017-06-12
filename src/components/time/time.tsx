@@ -2,7 +2,7 @@ import * as React from "react";
 import {Row, Col, Button} from "react-bootstrap";
 import {ActionHandler} from "../../actions/";
 import {State} from "../../state/time.state";
-import * as Actions from "../../actions/time.actions"
+import * as Actions from "../../services/time/time.actions"
 
 interface Props extends State, ActionHandler {}
 

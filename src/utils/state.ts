@@ -26,21 +26,6 @@ export function createStore(...services: Service<AppState>[]): Store<AppState> {
     return createReduxStore(reducer, applyMiddleware(...servicesMiddleware));
 }
 
-// function createDispatchMiddleware(services: Dispatch): Middleware {
-//     return (api: MiddlewareAPI<AppState>) => 
-//         (next: ReduxDispatch<AppState>) => (action: Action) => {
-//     }
-// }
-
-// const createServicesMiddleware = 
-//     (services: Dispatch) => 
-//     (api: MiddlewareAPI<AppState>) => 
-//     (next: ReduxDispatch<AppState>) => 
-//     (action: Action): Action => {
-//         services(action);
-//         return next(action);
-//     }
-
 const createServiceMiddleware = 
     (service: Service<AppState>) => 
     (api: MiddlewareAPI<AppState>) => 

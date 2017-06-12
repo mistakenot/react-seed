@@ -1,4 +1,4 @@
-import {Action} from "actions";
+import {Action} from "utils/actions";
 
 export const Types = {
     increase: "COUNTER_INCREASE",
