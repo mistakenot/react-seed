@@ -13,9 +13,9 @@ export class HttpService implements Service {
                     method: requestAction.method}, 
                     (err, resp, body) => {
                         if (err) {
-                            dispatch(Actions.httpResponseAction(true, null));
+                            dispatch(Actions.httpResponseAction(requestAction, true, null));
                         } else {
-                            dispatch(Actions.httpResponseAction(false, body));
+                            dispatch(Actions.httpResponseAction(requestAction, false, body));
                         }
                 })
             }

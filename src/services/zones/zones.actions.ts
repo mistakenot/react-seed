@@ -1,7 +1,15 @@
 import {Action} from "../../utils/actions";
+import {Zone} from "../../domain/zone";
 
 export const Types = {
-    requestZones: "ZONE_SERVICE_REQUEST"
+    requestZones: "ZONE_SERVICE_REQUEST",
+    receivedZones: "ZONE_SERVICE_RECEIVE"
 }
 
-export const requestZones: Action = ({type: Types.requestZones})
+export interface ReceivedZonesActions extends Action {
+    rootZone: Zone
+}
+
+export const requestZones: Action = ({type: Types.requestZones});
+
+export const receiveZones = (rootZone: Zone): ReceivedZonesActions => ({type: Types.receivedZones, rootZone: rootZone});
