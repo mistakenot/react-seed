@@ -1,8 +1,9 @@
 import * as React from "react";
-import {ActionHandler} from "actions";
-import {State} from "../state/counter.state";
 import {Button} from "react-bootstrap";
-import * as Actions from "../actions/counter.actions";
+import {ActionHandler} from "utils/actions";
+
+import {State} from "./counter.state";
+import * as Actions from "./counter.actions";
 
 interface Props extends State, ActionHandler {}
 

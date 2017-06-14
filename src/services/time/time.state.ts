@@ -8,7 +8,7 @@ export interface State {
 }
 
 const defaultState: State = {
-    time: "",
+    time: new Date().toLocaleTimeString(),
     active: true
 }
 

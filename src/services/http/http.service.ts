@@ -1,7 +1,7 @@
 import * as request from "request";
-
 import {Action} from "utils/actions";
 import {ServiceBase} from "utils/services";
+
 import * as Actions from "./http.actions";
 
 export class HttpService extends ServiceBase<{}> {
