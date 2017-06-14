@@ -1,4 +1,5 @@
-import {Action} from "utils/actions";
+import {Action, Dispatch} from "utils/actions";
+import * as request from "request";
 
 export const Types = {
     request: "HTTP_REQUEST",
@@ -22,3 +23,17 @@ export const httpResponseAction = (error: boolean, body: any): HttpResponseActio
         body: body
     };
 }
+
+export const httpRequestAction = 
+    (uri: string, method: string) =>
+    (dispatch: Dispatch) => {
+        request({
+            method: method,
+            url: uri
+        }, (err, resp, body) => {
+            if (err) {
+                dispatch(httpResponseAction(true, null))
+            }
+            dispatch(httpResponseAction(false, body));
+        });
+    }

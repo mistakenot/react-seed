@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Provider, connect} from "react-redux";
 import {createStore} from "redux";
 
-let store = createStore(...services);
+let store = createStore();
 
 const mapStateToProps = (state: any) => {
   return state;
