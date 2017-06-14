@@ -1,5 +1,33 @@
 {
     "promotions": [
         {"id": 1, "name": "A promotion"}
-    ]
+    ],
+    "zones": {
+        "id": 1,
+        "name": "Super Zone",
+        "children": [
+            {
+                "id": 2,
+                "name": "Zone 2",
+                "children": [
+                    {
+                        "id": 4,
+                        "name": "Zone 4",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Zone 3",
+                "children": [
+                    {
+                        "id": 5,
+                        "name": "Zone 5",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
 }

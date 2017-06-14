@@ -1,5 +1,6 @@
 import * as React from "react";
-import {Collapse, Row, Col, Checkbox, Glyphicon, Button, Radio} from "react-bootstrap";
+import {Node, NodeProps} from "./node/node.component";
+import * as NodeActions from "./node/node.actions";
 
 interface TreeProps {
     root: NodeProps;
@@ -11,12 +12,12 @@ interface TreeState {
 }
 
 export class Tree extends React.Component<TreeProps, TreeState> {
-    constructor(props, state) {
+    constructor(props: TreeProps, state: TreeState) {
         super(props, state);
         this.state = this.props;
     }
 
-    findElement(id: string, node: NodeProps): NodeProps {
+    findElement(id: string, node: NodeProps): NodeProps | undefined {
         if (node.id === id) {
             return node;
         }
@@ -55,10 +56,10 @@ export class Tree extends React.Component<TreeProps, TreeState> {
     onSelect(id: string) {
         var node = this.findElement(id, this.state.root);
 
-        if (node) {
+        if (node !== undefined) {
             this.reset();
             node.isSelected = !node.isSelected;
-            this.getAllAncesstors(node).forEach(n => n.isSelected = node.isSelected);
+            this.getAllAncesstors(node).forEach(n => n.isSelected = (node as NodeProps).isSelected);
             this.onUpdate();
         }
     }
@@ -85,6 +86,15 @@ export class Tree extends React.Component<TreeProps, TreeState> {
         this.props.onUpdate(ids);
     }
 
+    handleNodeAction(action: NodeActions.NodeAction) {
+        switch (action.type) {
+            case NodeActions.Types.ClickExpand:
+                this.onExpand(action.id);
+            case NodeActions.Types.ClickSelect:
+                this.onSelect(action.id);
+        }
+    }
+
     render() {
         return (
             <div>
@@ -92,9 +102,9 @@ export class Tree extends React.Component<TreeProps, TreeState> {
                     <label>Filter</label>
                     <input className="form-control" type="text" onChange={e => this.onChangeFilter(e.target.value)}/>
                 </div>
-                <Node {...this.state.root} 
-                    onExpand={(id: string) => this.onExpand(id)} 
-                    onSelect={(id: string) => this.onSelect(id)} />
+                <Node 
+                    {...this.state.root} 
+                    dispatch={a => this.handleNodeAction(a as NodeActions.NodeAction)} />
             </div>)
     }
 }

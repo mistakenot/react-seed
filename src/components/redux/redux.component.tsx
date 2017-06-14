@@ -1,16 +1,10 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import {App} from './components/app/App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
-import {Provider} from "react-redux";
-import {createStore, AppState} from "./state";
-import {connect} from "react-redux";
-import {services} from "./services";
+import {Provider, connect} from "react-redux";
+import {createStore} from "redux";
 
 let store = createStore(...services);
 
-const mapStateToProps = (state: AppState) => {
+const mapStateToProps = (state: any) => {
   return state;
 }
 
@@ -20,15 +14,13 @@ const mapDispatchToProps = (dispatch: (msg: any) => void) => {
   }
 }
 
-const Child = connect(mapStateToProps, mapDispatchToProps)(App)
-
 interface Props {
     mapStateToProps: (state: any) => any
     mapDispatchToProps: (dispatch: (action: any) => void) => void
 }
-export class Redux extends React.Component<Props, {}> {
+export class Redux<TState> extends React.Component<Props, {}> {
     render () {
-        var ConnectedChild = connect(mapStateToProps, mapDispatchToProps)(this.children);
+        var ConnectedChild = connect(mapStateToProps, mapDispatchToProps)(this.props.children);
 
         return (
             <Provider store={store}>
