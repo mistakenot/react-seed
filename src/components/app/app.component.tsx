@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.css';
+import './app.css';
 import {Counter} from "../counter";
 import {Time} from "../time/time";
 import {AppState} from "state";
