@@ -1,19 +1,24 @@
 import * as request from "request";
-import { put, takeEvery } from 'redux-saga/effects'
 import * as Actions from "./http.actions";
+import {Action, Dispatch} from "../../utils/actions";
+import {Service} from "../";
 
-function* httpRequest(action: Actions.HttpRequestAction) {
-    yield request({
-        method: action.method,
-        url: action.url
-    }, (err, resp, body) => {
-        if (err) {
-            return put(Actions.httpResponseAction(true, null))
+export class HttpService implements Service {
+    onAction(action: Action, dispatch: Dispatch) {
+        switch (action.type) {
+            case (Actions.Types.request): {
+                let requestAction = action as Actions.HttpRequestAction;
+                request({
+                    url: requestAction.url, 
+                    method: requestAction.method}, 
+                    (err, resp, body) => {
+                        if (err) {
+                            dispatch(Actions.httpResponseAction(true, null));
+                        } else {
+                            dispatch(Actions.httpResponseAction(false, body));
+                        }
+                })
+            }
         }
-        return put(Actions.httpResponseAction(false, body));
-    });
-}
-
-export function* httpSaga() {
-    yield takeEvery(Actions.Types.request, httpRequest)
+    }
 }

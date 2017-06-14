@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Provider, connect} from "react-redux";
-import {createStore} from "redux";
+import {createStore, combineReducers} from "redux";
 
-let store = createStore();
+let store = createStore(combineReducers({}));
 
 const mapStateToProps = (state: any) => {
   return state;
