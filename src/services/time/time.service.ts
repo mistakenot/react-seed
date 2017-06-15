@@ -1,5 +1,5 @@
-import {emptyDispatch} from "utils/actions";
-import {Service} from "utils/services";
+import {emptyDispatch} from "utils";
+import {Service} from "utils";
 
 import {newTime} from "./time.actions";
 import {State} from "./time.state";
@@ -12,8 +12,8 @@ export const timeService: Service<State> = (state, dispatch) => {
     return emptyDispatch;
 }
 
-import {ServiceBase} from "utils/services";
-import {Action, Dispatch} from "utils/actions";
+import {ServiceBase} from "utils";
+import {Action, Dispatch} from "utils";
 
 export class TimeService extends ServiceBase<State> {
     constructor(dispatch: Dispatch, getState: () => State) {

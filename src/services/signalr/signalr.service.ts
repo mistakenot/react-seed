@@ -1,4 +1,4 @@
-import {Action, Dispatch} from "../../utils/actions";
+import {Action, Dispatch} from "../../utils";
 import {Service} from "../";
 import * as Actions from "./signalr.actions";
 

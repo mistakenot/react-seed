@@ -1,5 +1,5 @@
 import {Service} from "../";
-import {Action, Dispatch} from "utils/actions";
+import {Action, Dispatch} from "utils";
 import * as HttpActions from "../http/http.actions";
 import * as Actions from "./zones.actions";
 import {Zone} from "../../domain/zone";

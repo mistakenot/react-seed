@@ -1,4 +1,4 @@
-import {Action} from "utils/actions";
+import {Action} from "utils";
 
 import * as Actions from "./time.actions";
 

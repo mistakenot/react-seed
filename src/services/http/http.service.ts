@@ -1,6 +1,6 @@
 import * as request from "request";
 import * as Actions from "./http.actions";
-import {Action, Dispatch} from "../../utils/actions";
+import {Action, Dispatch} from "../../utils";
 import {Service} from "../";
 
 export class HttpService implements Service {

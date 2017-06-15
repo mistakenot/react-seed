@@ -1,4 +1,4 @@
-import {Action, Dispatch} from "../utils/actions";
+import {Action, Dispatch} from "utils";
 
 export interface Service {
     onAction: (action: Action, dispatch: Dispatch) => void;

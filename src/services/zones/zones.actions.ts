@@ -1,5 +1,5 @@
-import {Action} from "../../utils/actions";
-import {Zone} from "../../domain/zone";
+import {Action} from "utils";
+import {Zone} from "domain/zone";
 
 export const Types = {
     requestZones: "ZONE_SERVICE_REQUEST",
