@@ -1,10 +1,13 @@
 import * as request from "request";
+import { Action, ServiceBase, Dispatch } from "utils";
 import * as Actions from "./http.actions";
-import {Action, Dispatch} from "../../utils";
-import {Service} from "../";
 
-export class HttpService implements Service {
-    onAction(action: Action, dispatch: Dispatch) {
+export class HttpService extends ServiceBase {
+    constructor(dispatch: Dispatch) {
+        super(dispatch);
+    }
+    
+    onAction(action: Action) {
         switch (action.type) {
             case (Actions.Types.request): {
                 let requestAction = action as Actions.HttpRequestAction;
@@ -13,9 +16,9 @@ export class HttpService implements Service {
                     method: requestAction.method}, 
                     (err, resp, body) => {
                         if (err) {
-                            dispatch(Actions.httpResponseAction(requestAction, true, null));
+                            this.dispatch(Actions.httpResponseAction(requestAction, true, null));
                         } else {
-                            dispatch(Actions.httpResponseAction(requestAction, false, body));
+                            this.dispatch(Actions.httpResponseAction(requestAction, false, body));
                         }
                 })
             }

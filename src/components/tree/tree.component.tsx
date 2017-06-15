@@ -1,10 +1,10 @@
 import * as React from "react";
 import {Node, NodeProps} from "./node/node.component";
 import * as NodeActions from "./node/node.actions";
+import {ActionHandler} from "utils";
 
-interface TreeProps {
+interface TreeProps extends ActionHandler {
     root: NodeProps;
-    onUpdate: (ids: string[]) => void;
 }
 
 interface TreeState {

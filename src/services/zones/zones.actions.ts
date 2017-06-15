@@ -10,6 +10,9 @@ export interface ReceivedZonesActions extends Action {
     rootZone: Zone
 }
 
-export const requestZones: Action = ({type: Types.requestZones});
+export const requestZones: Action = ({
+    type: Types.requestZones});
 
-export const receiveZones = (rootZone: Zone): ReceivedZonesActions => ({type: Types.receivedZones, rootZone: rootZone});
+export const receiveZones = (rootZone: Zone): ReceivedZonesActions => ({
+    type: Types.receivedZones, 
+    rootZone: rootZone});

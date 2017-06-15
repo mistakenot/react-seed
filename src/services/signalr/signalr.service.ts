@@ -1,15 +1,16 @@
 import {Action, Dispatch} from "../../utils";
-import {Service} from "../";
+import {ServiceBase} from "utils";
 import * as Actions from "./signalr.actions";
 
-export class SignalRService implements Service {
+export class SignalRService extends ServiceBase {
     private connection: any
 
-    constructor() {
-        this.connection = {}
+    constructor(dispatch: Dispatch) {
+        super(dispatch);
+        this.connection = {}; // Set up signal r connection here
     }
 
-    onAction(action: Action, dispatch: Dispatch) {
+    onAction(action: Action) {
         switch (action.type) {
             case Actions.Types.requestInvoke: {
                 // request signalr invoke
