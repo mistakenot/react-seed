@@ -1,9 +1,10 @@
 import * as React from "react";
+import {ActionHandler} from "utils";
 import {Node, NodeProps} from "./node/node.component";
 import * as NodeActions from "./node/node.actions";
-import {ActionHandler} from "utils";
+import * as Actions from "./tree.actions";
 
-interface TreeProps extends ActionHandler {
+export interface TreeProps extends ActionHandler {
     root: NodeProps;
 }
 
@@ -83,7 +84,7 @@ export class Tree extends React.Component<TreeProps, TreeState> {
             .map(n => n.id);
         this.forceUpdate();
 
-        this.props.onUpdate(ids);
+        this.props.dispatch(Actions.onSelection(ids))
     }
 
     handleNodeAction(action: NodeActions.NodeAction) {

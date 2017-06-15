@@ -9,6 +9,10 @@ export interface NodeAction extends Action {
     id: string;
 }
 
-export const clickExpand = (id: string): NodeAction => ({type: Types.ClickExpand, id: id})
+export const clickExpand = (id: string): NodeAction => ({
+    type: Types.ClickExpand, 
+    id: id});
 
-export const clickSelect = (id: string): NodeAction => ({type: Types.ClickSelect, id: id})
+export const clickSelect = (id: string): NodeAction => ({
+    type: Types.ClickSelect, 
+    id: id});

@@ -1,13 +1,14 @@
 import * as React from 'react';
+import {State} from "./app.state";
 import './app.css';
-import {Counter} from "../counter";
-import {Time} from "../time/time";
-import {AppState} from "state";
-import {ActionHandler} from "../../actions";
+import { ActionHandler } from "utils";
+import { connect } from "react-redux";
+
+import {ZoneTree} from "./zone-tree";
 
 const logo = require('./logo.svg');
 
-interface Props extends AppState, ActionHandler {}
+interface Props extends State, ActionHandler {}
 
 export const App = (props: Props) => (
   <div className="App">
@@ -18,6 +19,12 @@ export const App = (props: Props) => (
     <p className="App-intro">
       To get started, edit this <code>src/App.tsx</code> and save to reload.
     </p>
-    <Counter {...props.counter} dispatch={props.dispatch}/>
-    <Time {...props.time} dispatch={props.dispatch} />
+    <ZoneTree {...props.zoneTree} dispatch={props.dispatch} />
   </div>);
+
+const mapStateToProps = (state: any) => (state);
+
+const mapDispatchToProps = (dispatch: (msg: any) => void) => ({
+    dispatch: dispatch});
+
+export const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);

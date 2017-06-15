@@ -1,5 +1,5 @@
-import {Action} from "actions";
-import * as Actions from "../actions/counter.actions";
+import {Action} from "utils";
+import * as Actions from "./counter.actions";
 
 export interface State {
     count: number;

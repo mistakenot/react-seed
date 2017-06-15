@@ -1,30 +1,21 @@
 import * as React from 'react';
-import {Provider, connect} from "react-redux";
-import {createStore, combineReducers} from "redux";
-
-let store = createStore(combineReducers({}));
-
-const mapStateToProps = (state: any) => {
-  return state;
-}
-
-const mapDispatchToProps = (dispatch: (msg: any) => void) => {
-  return {
-    dispatch: dispatch
-  }
-}
+import { Provider, connect } from "react-redux";
+import { createStore } from "redux";
+import { Dispatch } from "utils";
 
 interface Props {
     mapStateToProps: (state: any) => any
-    mapDispatchToProps: (dispatch: (action: any) => void) => void
+    mapDispatchToProps: (dispatch: Dispatch) => any
+    reducer: any
+    component: React.StatelessComponent<any>
 }
-export class Redux<TState> extends React.Component<Props, {}> {
-    render () {
-        var ConnectedChild = connect(mapStateToProps, mapDispatchToProps)(this.props.children);
 
-        return (
-            <Provider store={store}>
-                <ConnectedChild />
-            </Provider>)
-    }
-)
+export const ReduxApp = (props: Props) => {
+    let store = createStore(props.reducer);
+    var Child = connect(props.mapStateToProps, props.mapDispatchToProps)(props.component);
+
+    return (
+        <Provider store={store}>
+            <Child />
+        </Provider>)
+}

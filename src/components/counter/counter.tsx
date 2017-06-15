@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Button} from "react-bootstrap";
-import {ActionHandler} from "utils/actions";
+import {ActionHandler} from "utils";
 
 import {State} from "./counter.state";
 import * as Actions from "./counter.actions";
