@@ -2,7 +2,6 @@ import * as React from 'react';
 import {State} from "./app.state";
 import './app.css';
 import { ActionHandler } from "utils";
-import { connect } from "react-redux";
 
 import {ZoneTree} from "./zone-tree";
 
@@ -21,10 +20,3 @@ export const App = (props: Props) => (
     </p>
     <ZoneTree {...props.zoneTree} dispatch={props.dispatch} />
   </div>);
-
-const mapStateToProps = (state: any) => (state);
-
-const mapDispatchToProps = (dispatch: (msg: any) => void) => ({
-    dispatch: dispatch});
-
-export const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
