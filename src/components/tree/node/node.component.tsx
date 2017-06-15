@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Collapse, Row, Col} from "react-bootstrap";
-import {ActionHandler} from "../../../utils/actions";
+import {ActionHandler} from "utils";
 import * as Actions from "./node.actions";
 
 export interface NodeProps extends ActionHandler {
