@@ -32,9 +32,23 @@ const mappedDispatch = (parent: Dispatch) => (action: Action) => {
         }
     }
 }
-export const ZoneTree = (props: Props) => (
-    props.isLoading ? 
-        <div>Loading...</div> :
-        props.rootZone === undefined ? 
-            <div>No zones are available.</div> : 
-            <Tree {...mapProps(props.rootZone as Zone, props.selectedZoneId, mappedDispatch(props.dispatch))} />)
+// export const ZoneTree: React.SFC<Props> = (props: Props) => (
+//     props.isLoading ? 
+//         <div>Loading...</div> :
+//         props.rootZone === undefined ? 
+//             <div>No zones are available.</div> : 
+//             <Tree {...mapProps(props.rootZone as Zone, props.selectedZoneId, mappedDispatch(props.dispatch))} />)
+
+export class ZoneTree extends React.Component<Props, {}> {
+    componentDidMount() {
+        this.props.dispatch(Actions.onLoadZoneTree);
+    }
+
+    render() {
+        return this.props.isLoading ? 
+            <div>Loading...</div> :
+            this.props.rootZone === undefined ? 
+                <div>No zones are available.</div> : 
+                <Tree {...mapProps(this.props.rootZone as Zone, this.props.selectedZoneId, mappedDispatch(this.props.dispatch))} />;
+    }
+}

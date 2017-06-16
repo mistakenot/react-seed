@@ -5,16 +5,21 @@ import './index.css';
 import { Provider, connect } from "react-redux";
 import {App} from "components/app/app.component";
 import {reducer as AppReducer} from "components/app/app.state";
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { createServices } from "services";
+import { createServicesMiddleware } from "utils";
 
 let reducer = combineReducers({
   app: AppReducer
 });
 
-let store = createStore(reducer);
+let servicesMiddleware = createServicesMiddleware()
 
-(window as any).services = createServices(store)
+let store = createStore(
+  reducer, 
+  applyMiddleware(servicesMiddleware));
+
+(window as any).services = createServices(store.dispatch, store.getState)
 
 const mapStateToProps = (state: any) => (state);
 

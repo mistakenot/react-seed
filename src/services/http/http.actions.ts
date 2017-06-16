@@ -15,13 +15,21 @@ export interface HttpResponseAction extends Action {
     request: HttpRequestAction,
     wasSuccess: boolean;
     body: any;
+    err?: any;
 }
 
-export const httpResponseAction = (request: HttpRequestAction, error: boolean, body: any): HttpResponseAction => ({
+export const httpResponseActionOk = (request: HttpRequestAction, body: any): HttpResponseAction => ({
     request: request,
     type: Types.response,
-    wasSuccess: !error,
+    wasSuccess: false,
     body: body })
+
+export const httpResponseActionFail = (request: HttpRequestAction, error: any): HttpResponseAction => ({
+    request: request,
+    type: Types.response,
+    wasSuccess: false,
+    err: error,
+    body: null })
 
 export const httpRequestAction = (id: string, method: string, url: string): HttpRequestAction => ({ 
     callingType: id,

@@ -12,13 +12,13 @@ export class HttpService extends ServiceBase {
             case (Actions.Types.request): {
                 let requestAction = action as Actions.HttpRequestAction;
                 request({
-                    url: requestAction.url, 
+                    url: "http://localhost:3000/" + requestAction.url, 
                     method: requestAction.method}, 
                     (err, resp, body) => {
                         if (err) {
-                            this.dispatch(Actions.httpResponseAction(requestAction, true, null));
+                            // this.dispatch(Actions.httpResponseActionFail(requestAction, err));
                         } else {
-                            this.dispatch(Actions.httpResponseAction(requestAction, false, body));
+                            // this.dispatch(Actions.httpResponseActionOk(requestAction, body));
                         }
                 })
             }

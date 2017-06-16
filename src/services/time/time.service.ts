@@ -4,7 +4,7 @@ import {ServiceBase} from "utils";
 import {Action, Dispatch} from "utils";
 
 export class TimeService extends ServiceBase {
-    private timer: NodeJS.Timer;
+    private timer: any;
 
     constructor(dispatch: Dispatch, private getState: () => State) {
         super(dispatch);
