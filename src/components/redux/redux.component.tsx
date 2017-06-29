@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Provider, connect } from "react-redux";
+import { Provider, connect, Store } from "react-redux";
 import { createStore } from "redux";
 import { Dispatch } from "utils";
 
 interface Props {
     mapStateToProps: (state: any) => any
     mapDispatchToProps: (dispatch: Dispatch) => any
-    reducer: any
+    store: Store<any>
     component: React.StatelessComponent<any>
 }
 

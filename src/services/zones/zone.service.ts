@@ -12,7 +12,7 @@ export class ZoneService extends ServiceBase {
     onAction(action: Action) {
         switch (action.type) {
             case (Actions.Types.requestZones): {
-                // this.dispatch(HttpActions.httpRequestAction(Actions.Types.requestZones, "GET", "/zones"));
+                this.dispatch(HttpActions.httpRequestAction(Actions.Types.requestZones, "GET", "/zones"));
             }
             case (HttpActions.Types.response): {
                 let httpResponse = action as HttpActions.HttpResponseAction;

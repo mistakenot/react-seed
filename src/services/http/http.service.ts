@@ -16,9 +16,9 @@ export class HttpService extends ServiceBase {
                     method: requestAction.method}, 
                     (err, resp, body) => {
                         if (err) {
-                            // this.dispatch(Actions.httpResponseActionFail(requestAction, err));
+                            this.dispatch(Actions.httpResponseActionFail(requestAction, err));
                         } else {
-                            // this.dispatch(Actions.httpResponseActionOk(requestAction, body));
+                            this.dispatch(Actions.httpResponseActionOk(requestAction, body));
                         }
                 })
             }

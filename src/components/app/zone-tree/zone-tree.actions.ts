@@ -14,4 +14,4 @@ export const onSelectZone = (zoneId: string): OnSelectZoneAction => ({
     zoneId: zoneId });
 
 export const onLoadZoneTree: Action = ({
-    type: Types.onLoadZoneTree});
+    type: Types.onLoadZoneTree });
